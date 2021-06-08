@@ -40,15 +40,10 @@ $(function() {
     $btn.on('click', function(){
         $.getJSON(`${baseURL}/${deckId}/draw/`)
         .then(data => {
-            card = data.cards[0];
-            let deckId = data.deck_id;
-            return $.getJSON(`${baseURL}/${deckId}/draw/`);
-        })
-        .then(data => {
-            let cardLink = data.cards[0].image;
+            let cardSrc = data.cards[0].image;
             $cardArea.append(
                 $('<img>', {
-                    src: cardLink
+                    src: cardSrc,
                 })
             )
             //requesting the card's image 
